@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@mixin common-styles {
+    width: 700px;
+    margin-top: 15px;
+    text-align: center;
+    font-size: 25px;
+    border: 3px solid #169da9;
+    border-radius: 8px;
+    background-color: #033236;
+    color: aliceblue;
+    padding: 15px;
+    letter-spacing: 3px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.app {
+    min-width: 800px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+    
+    .timer-container {
+        font-size: 80px;
+        display: flex;
+        gap: 10px;
+        color: aliceblue;
+
+        .time {
+            border: 3px solid #169da9;
+            border-radius: 8px;
+            background-color: #033236;
+            padding: 5px;
+            margin: 15px 0;
+        }
+
+        .dot {
+            color: #033236;
+            margin-top: 15px;
+        }
+    }
+
+    .slider-container {
+        height: 15px;
+        width: 400px;
+        background-color: rgb(165, 164, 164);
+        border-radius: 15px;
+        margin: 10px;
+
+        .slider {
+            height: 15px;
+            max-width: 100%;
+            border-radius: 15px;
+            background: linear-gradient(to right, green, yellow);
+            transition: width 1s ease;
+        }
+    }
+
+    .complexity-page {
+        @include common-styles;
+        
+        h1 {
+            margin: 10px;
+        }
+        
+        .complexity-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            margin: 15px;
+            padding: 10px;
+
+            .complexity-button {
+                width: 200px;
+                padding: 5px 0;
+                border: 1px solid transparent;
+            }
+
+            .complexity-button:hover {
+                cursor: pointer;
+                transform: scale(1.2);
+                border-color: #bcd9da;
+                transition: transform 0.5s ease, border-color 0.5s ease;
+            }
+        }
+    }
+
+    .slide-out {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    .question-container {
+        @include common-styles;
+        transform: translateX(100%); 
+        opacity: 0.3;
+
+        .question-title {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            height: 200px;
+            margin-bottom: 30px;
+        }
+
+        .answer-block {
+            margin: 50px 0 30px;
+            display: grid;
+            grid-template-columns: calc(50% - 10px) auto;
+            grid-gap: 20px;
+
+            .answer-option {
+                border: 2px solid #169da9;
+                border-radius: 15px;
+                cursor: pointer;
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                gap: 25px;
+                padding: 3px 15px;
+                background-color: #054041;
+            }
+
+            .right-answer {
+                background: linear-gradient(to right, green, yellow);
+            }
+
+            .wrong-answer {
+                background-color: red;
+            }
+        }
+    }
+
+    .result-container {
+        @include common-styles;
+        padding: 25px;
+        opacity: 0;
+        transform: translateX(100%);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+
+        .results {
+            text-align: left;
+            margin: 15px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            
+            .results-span {
+                margin-left: 25px;
+                font-style: italic;
+                color: green;
+            }
+        }
+
+        .restart-button {
+            font-size: 26px;
+            padding: 10px;
+            border: 2px solid #169da9;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-weight: bold;
+            letter-spacing: 3px;
+
+            &:hover {
+                cursor: pointer;
+                background-color: rgba(199, 208, 211, 0.61);
+                box-shadow: rgba(199, 208, 211, 0.61) 10px -1px 20px;
+            }
+        }
+    }
+
+    .slide-in {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
